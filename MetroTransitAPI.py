@@ -29,7 +29,7 @@ def updateList(rawList):
 def getTimes(updatedList):
      #to filter out the exact route and direction I wanted as there are multiple routes that stop at each stop
     NB = updateList(list(filter(lambda c: c['RouteDirection'] == 'NB' and c['Route'] == '4', response)))
-    SB = updateList(list(filter(lambda c: c['RouteDirection'] == 'SB' and c['Route'] == '113', response)))
+    SB = updateList(list(filter(lambda c: c['RouteDirection'] == 'SB' and c['Route'] == '4', response)))
     EB = updateList(list(filter(lambda c: c['RouteDirection'] == 'EB' and c['Route'] == '21', response)))
     WB = updateList(list(filter(lambda c: c['RouteDirection'] == 'WB' and c['Route'] == '21', response)))
     NB_Times = ','.join([str(elem) for elem in NB if type(elem) == int and elem < 100])
