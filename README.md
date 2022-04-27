@@ -9,5 +9,6 @@ Scrolling 64x32 LED Matrix for Metro Transit
 
 ## Resources Used:
 -[Adafruit RGB Matrix Guide](https://learn.adafruit.com/adafruit-rgb-matrix-plus-real-time-clock-hat-for-raspberry-pi)
+
 -[rpi-rgb-led-matrix by hzeller](https://github.com/hzeller/rpi-rgb-led-matrix)
 
