@@ -18,7 +18,7 @@ def updateList(rawList):
     updatedList = []
     currentTime = round(time.time())
     i=0
-    if bool(rawList) == False:
+    if len(rawList) == 0:
         updatedList.append('N/A')
     else:
         while i < len(rawList) and i < 3:
@@ -32,18 +32,13 @@ def getTimes(updatedList):
     SB = updateList(list(filter(lambda c: c['RouteDirection'] == 'SB' and c['Route'] == '4', response)))
     EB = updateList(list(filter(lambda c: c['RouteDirection'] == 'EB' and c['Route'] == '21', response)))
     WB = updateList(list(filter(lambda c: c['RouteDirection'] == 'WB' and c['Route'] == '21', response)))
-    NB_Times = ','.join([str(elem) for elem in NB if elem == True and elem < 100])
-    SB_Times = ','.join([str(elem) for elem in SB if elem == True and elem < 100])
-    EB_Times = ','.join([str(elem) for elem in EB if elem == True and elem < 100])
-    WB_Times = ','.join([str(elem) for elem in WB if elem == True and elem < 100])
+    NB_Times = ','.join([str(elem) for elem in NB if elem < 100])
+    SB_Times = ','.join([str(elem) for elem in SB if elem < 100])
+    EB_Times = ','.join([str(elem) for elem in EB if elem < 100])
+    WB_Times = ','.join([str(elem) for elem in WB if elem < 100])
     
     busRoutes = ['4N', '4S', '21E', '21W']
     busTimes = [NB_Times, SB_Times, EB_Times, WB_Times]
-    i=0
-    while i < len(busTimes):
-        if busTimes[i] == '':
-            busTimes[i] = 'N/A'
-        i+=1
 
    
     return [busRoutes, busTimes]
