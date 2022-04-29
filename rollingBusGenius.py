@@ -32,28 +32,31 @@ class RunText(SampleBase):
             graphics.DrawText(offscreen_canvas, font, pos + 11, 15, textColor, 'UPCOMING')
             graphics.DrawText(offscreen_canvas, font, pos + 18, 23, textColor, 'BUSES')
             graphics.DrawText(offscreen_canvas, font, pos + 10, 31, textColor, str(currentTime))
-            
-            graphics.DrawText(offscreen_canvas, font,  pos + 126 - (len(times[1][0])*5), 7, textColor, times[1][0])
-            graphics.DrawText(offscreen_canvas, font,  pos + 126 - (len(times[1][1])*5), 15, textColor, times[1][1])
-            graphics.DrawText(offscreen_canvas, font,  pos + 126 - (len(times[1][2])*5), 23, textColor, times[1][2])
-            graphics.DrawText(offscreen_canvas, font,  pos + 126 - (len(times[1][3])*5), 31, textColor, times[1][3])
 
-            graphics.DrawText(offscreen_canvas, largefont, pos + 63, 7, textColor, times[0][0])
-            graphics.DrawText(offscreen_canvas, largefont, pos + 63, 15, textColor, times[0][1])
-            graphics.DrawText(offscreen_canvas, largefont, pos + 63, 23, textColor, times[0][2])
-            graphics.DrawText(offscreen_canvas, largefont, pos + 63, 31, textColor, times[0][3])
+            i=0
+            height_amt = 7
+            while i < 4:
+                graphics.DrawText(offscreen_canvas, font, pos + 126 - (len(times[1][i]) *5), height_amt, textColor, times[1][i])
+                height_amt+=8
+                i+=1
+            
+            i=0
+            height_amt = 7
+            while i < 4:
+                graphics.DrawText(offscreen_canvas, largefont, pos + 63, height_amt, textColor, times[0][i])
+                height_amt += 8
+                i += 1
             
             graphics.DrawText(offscreen_canvas, font, pos + 128, 7, textColor, 'LAKE/LYNDALE')
             graphics.DrawText(offscreen_canvas, font, pos + 128 + 10, 15, textColor, 'UPCOMING')
             graphics.DrawText(offscreen_canvas, font, pos + 128 + 18, 23, textColor, 'BUSES')
             graphics.DrawText(offscreen_canvas, font, pos + 128 +10, 31, textColor, str(currentTime))
 
-
             pos -=1      
             if (pos == 0):
                 time.sleep(4)
             elif (pos == -64):
-                time.sleep(55)                
+                time.sleep(35)                
             elif (pos == -128):
                 time.sleep(4)
                 response = getAPI(Stops)
@@ -63,10 +66,7 @@ class RunText(SampleBase):
             time.sleep(0.03)
             
             offscreen_canvas = self.matrix.SwapOnVSync(offscreen_canvas)
-
-        
-   
-
+            
 # Main function
 if __name__ == "__main__":
     run_text = RunText()
